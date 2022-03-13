@@ -1,14 +1,16 @@
 import React, { Fragment, useState } from "react";
 import logo from "../img/logo.png";
 import GetBeez from "./GetBeez";
+import App from "../App";
 
-const CreateBeez = () => {
+const CreateBeez = (props) => {
   const [link, setLink] = useState("");
   const [url_id, setUrl_id] = useState("");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
+      // Assign random 8-character code if empty
       if (url_id == "") {
         setUrl_id(
           Array.from(Array(8), () =>
@@ -30,17 +32,8 @@ const CreateBeez = () => {
         body: JSON.stringify(body),
       });
 
-      console.log(response.json);
-
       alert("Beez successfully created with URL ID " + url_id + "!");
-
-      const display = await fetch("http://localhost:5000/beez/${body.url_id}", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-
-      window.location = "/";
+      props.setBeezId(url_id);
     } catch (err) {
       console.error(err.message);
     }
@@ -48,11 +41,8 @@ const CreateBeez = () => {
 
   return (
     <Fragment>
-      <div className="flex justify-center items-center">
-        <form
-          className="block m-5 p-5 shadow-lg bg-white rounded-lg"
-          onSubmit={onSubmitForm}
-        >
+      <div className="justify-center items-center block ">
+        <form className="block m-5 p-5" onSubmit={onSubmitForm}>
           <div className="flex justify-center">
             <img className="h-48" src={logo} />
           </div>
@@ -76,7 +66,7 @@ const CreateBeez = () => {
             onChange={(e) => setUrl_id(e.target.value)}
           />
           <div className="flex space-x-1 justify-center mt-3">
-            <button className="m-1 px-5 py-2 bg-amber-400 hover:bg-amber-600 font-bold rounded-full">
+            <button className="px-5 py-2 bg-amber-400 hover:bg-amber-600 font-bold rounded-full shadow-lg">
               Shorten!
             </button>
           </div>
