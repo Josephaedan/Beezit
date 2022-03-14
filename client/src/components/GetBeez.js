@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from "react";
 const GetBeez = ({ beezId }) => {
     function copyToClipboard() {
         var beezUrl = "http://localhost:3001/" + beezId;
+        
         navigator.clipboard.writeText(beezUrl);
     }
 
@@ -15,7 +16,7 @@ const GetBeez = ({ beezId }) => {
                 <input
                     type="url"
                     className="w-full border rounded"
-                    value={"http://localhost:5000/" + beezId}
+                    value={"http://localhost:3001/" + beezId}
                 ></input>{" "}
                 <button
                     onClick={copyToClipboard()}
