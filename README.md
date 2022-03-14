@@ -1,37 +1,111 @@
-## Welcome to GitHub Pages
+# BeezIt URL Shortener
+by Joseph Aedan Marcus
 
-You can use the [editor on GitHub](https://github.com/Josephaedan/Beezit/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+<div align="center">
+  <a href="https://github.com/josephaedan/beezit">
+    <img src="/client/src/img/logo.png" alt="Logo" width="150" height="auto">
+  </a>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+  <h3 align="center">Beez It URL Shortener</h3>
 
-### Markdown
+  <p align="center">
+    Access the Hive to shorten your URL and send a bee (shortened link) out to your friends!
+  </p>
+</div>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+## Table of contents
 
-# Header 1
-## Header 2
-### Header 3
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Setup](#setup)
+- [Development](#development)
 
-- Bulleted
-- List
+## Features
 
-1. Numbered
-2. List
+<b>List of core features</b>
 
-**Bold** and _Italic_ and `Code` text
+- Enter a URL into input field :white_check_mark:
+- Generate random 8-character code for shortening URL :white_check_mark:
+- Create a Beez to shorten the URL ✅
+- Click to Copy shortened URL ✅
+- Edit URL linked to Beez 🚧
+- View all currently created Beez 🚧
 
-[Link](url) and ![Image](src)
+## Tech Stack
+
+* [PostgreSQL](https://www.postgresql.org/)
+* [Express](https://expressjs.com/)
+* [React.js](https://reactjs.org/)
+* [Node.js](https://nodejs.org/en/)
+
+## Setup
+
+### Ensure that you have Node.js, npm and PostgreSQL installed.
+
+If you do not have Node.js installed, it is recommended to install from their site [here](https://nodejs.org/en/). This will install the latest version of Node.js along with npm.
+
+If you do not have PostgreSQL installed, download it [here](https://postgresapp.com/downloads.html).
+
+### Clone the repository
+
+```bash
+git clone git@github.com:josephaedan/Beezit.git
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### Install dependencies
 
-### Jekyll Themes
+1. To install frontend dependencies, `cd` to the /client directory and run
+    ```bash
+    npm install
+    ```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Josephaedan/Beezit/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. To install backend dependencies, `cd` to the /server directory and run
+    ```bash
+    npm install
+    ```
 
-### Support or Contact
+1. To create the PostgreSQL database and table, in the backend /server directory, run the following command in psql
+    ```psql
+    \i database.sql
+    ```
+    
+    If your default Postgres account is not superuser `postgres`, switch to superuser by running
+    ```bash
+    sudo -u postgres psql
+    ```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Development
+
+### Start server in development
+
+1. Run Postgres app and start the server on `Port 5432`.
+
+2. Start the local backend server on 'Port 5000' by running
+    ```bash
+    node index
+    ```
+
+The server should now be running locally on `localhost:5000`, and the API can be reached via `localhost:5000/beez`.
+
+The backend server must be running before starting the app.
+
+### Start app in development
+
+1. Start the app by running
+```bash
+npm run start
+```
+
+The app should now be running locally on `localhost:3000`.
+
+The website should be now be live and connected with the backend server and database.
+
+## Contact Me!
+
+Joseph Aedan Marcus
+* [Email](mailto:josephaedan@gmail.com)
+* [LinkedIn](www.linkedin.com/in/josephaedan)
+* [Github](https://github.com/Josephaedan)
+
+Project Link: [https://github.com/josephaedan/Beezit](https://github.com/josephaedan/Beezit)
