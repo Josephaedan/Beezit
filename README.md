@@ -31,6 +31,7 @@ by Joseph Aedan Marcus
 - Click to Copy shortened URL ✅
 - Edit URL linked to Beez 🚧
 - View all currently created Beez 🚧
+- Deployed to live website 🚧
 
 ## Tech Stack
 
