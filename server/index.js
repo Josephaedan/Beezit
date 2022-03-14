@@ -23,6 +23,18 @@ app.post("/beez", async (req, res) => {
 
     res.json(newBeez.rows[0]);
   } catch (err) {
+    res.json({ Error: err.message });
+    console.error(err.message);
+  }
+});
+
+// Get all Beez
+app.get("/beez", async (req, res) => {
+  try {
+    const Beez = await pool.query("SELECT * FROM beez");
+    res.json(Beez.rows);
+  } catch (err) {
+    res.json({ link: "false" });
     console.error(err.message);
   }
 });
@@ -30,11 +42,13 @@ app.post("/beez", async (req, res) => {
 // Get a Beez
 app.get("/beez/:id", async (req, res) => {
   try {
-    const { Beez } = await pool.query("SELECT * FROM beez WHERE url_id = $1", [
-      id,
+    const url_id = req.params.id;
+    const Beez = await pool.query("SELECT * FROM beez WHERE url_id = $1", [
+      url_id,
     ]);
-    res.json(Beez.rows[0]);
+    res.json(Beez.rows);
   } catch (err) {
+    res.json({ url_id: "${req.params.id}", link: "false" });
     console.error(err.message);
   }
 });
@@ -43,7 +57,6 @@ app.get("/beez/:id", async (req, res) => {
 app.get("/:url_id", async (req, res) => {
   try {
     const { url_id } = req.params;
-    console.log("url_id: " + url_id);
     const link = await pool.query("SELECT link FROM beez WHERE url_id = $1", [
       url_id,
     ]);

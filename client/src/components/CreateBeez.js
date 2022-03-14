@@ -1,7 +1,5 @@
 import React, { Fragment, useState } from "react";
 import logo from "../img/logo.png";
-import GetBeez from "./GetBeez";
-import App from "../App";
 
 const CreateBeez = (props) => {
   const [link, setLink] = useState("");
@@ -11,7 +9,7 @@ const CreateBeez = (props) => {
     e.preventDefault();
     try {
       // Assign random 8-character code if empty
-      if (url_id == "") {
+      if (url_id === "") {
         setUrl_id(
           Array.from(Array(8), () =>
             Math.floor(Math.random() * 36).toString(36)
@@ -31,6 +29,12 @@ const CreateBeez = (props) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+      const data = await response.json();
+      console.log(data);
+      if (data.Error) {
+        alert("Error creating a Beez: " + data.Error);
+        return;
+      }
 
       alert("Beez successfully created with URL ID " + url_id + "!");
       props.setBeezId(url_id);

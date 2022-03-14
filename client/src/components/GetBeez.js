@@ -1,13 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useState } from "react";
 
-const GetBeez = (props) => {
-  const [BeezURL, setBeezURL] = useState(
-    "http://localhost:5000/" + props.beezId
-  );
-
+const GetBeez = ({ beezId }) => {
   function copyToClipboard() {
-    navigator.clipboard.writeText(BeezURL);
+    var beezUrl = "http://localhost:5000/" + beezId;
+    navigator.clipboard.writeText(beezUrl);
   }
 
   return (
@@ -15,11 +11,11 @@ const GetBeez = (props) => {
       <div className="flex mx-5 px-5 justify-center">
         <h1 className="w-full">Your Beez is:</h1>
       </div>
-      <div className="flex mx-5 mb-5 px-5 justify-center">
+      <div className="flex mx-5 mb-9 px-5 justify-center">
         <input
           type="url"
-          className=" w-full border rounded"
-          value={BeezURL}
+          className="w-full border rounded"
+          value={"http://localhost:5000/" + beezId}
         ></input>
         <button
           onClick={copyToClipboard()}
