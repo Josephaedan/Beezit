@@ -29,9 +29,9 @@ by Joseph Aedan Marcus
 - Generate random 8-character code for shortening URL :white_check_mark:
 - Create a Beez to shorten the URL ✅
 - Click to Copy shortened URL ✅
-- Edit URL linked to Beez 🚧
-- View all currently created Beez 🚧
-- Deployed to live website 🚧
+- Edit URL linked to Beez 🚧 (Not required in MVP-scope)
+- View all currently created Beez 🚧 (Not required in MVP-scope)
+- Deployed to live website 🚧 (Not required in MVP-scope)
 
 ## Tech Stack
 
