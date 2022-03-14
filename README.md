@@ -82,12 +82,12 @@ git clone git@github.com/josephaedan/Beezit.git
 
 1. Run Postgres app and start the server on `Port 5432`.
 
-2. Start the local backend server on 'Port 5000' by running
+2. Start the local backend server on `Port 3001` by running
     ```bash
     node index
     ```
 
-The server should now be running locally on `localhost:5000`, and the API can be reached via `localhost:5000/beez`.
+The server should now be running locally on `localhost:3001`, and the API can be reached via `localhost:3001/beez`.
 
 The backend server must be running before starting the app.
 
