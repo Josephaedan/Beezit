@@ -51,7 +51,7 @@ If you do not have PostgreSQL installed, download it [here](https://postgresapp.
 ### Clone the repository
 
 ```bash
-git clone git@github.com:josephaedan/Beezit.git
+git clone git@github.com/josephaedan/Beezit.git
 ```
 
 ### Install dependencies
