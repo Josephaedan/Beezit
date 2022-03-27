@@ -24,7 +24,7 @@ const CreateBeez = (props) => {
       }
       const body = { link, url_id };
 
-      const response = await fetch("http://localhost:5000/beez", {
+      const response = await fetch("http://localhost:3001/beez", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

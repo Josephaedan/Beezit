@@ -14,6 +14,6 @@ var id = require("./routes/id");
 app.use("/beez", beez);
 app.use("/", id);
 
-app.listen(5000, () => {
-  console.log("server has started on port 5000");
+app.listen(3001, () => {
+  console.log("server has started on port 3001");
 });
