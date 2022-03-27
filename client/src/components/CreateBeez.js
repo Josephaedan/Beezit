@@ -48,7 +48,7 @@ const CreateBeez = (props) => {
       <div className="justify-center items-center block ">
         <form className="block m-5 p-5" onSubmit={onSubmitForm}>
           <div className="flex justify-center">
-            <img className="h-48" src={logo} />
+            <img className="h-48" src={logo} alt="Logo" />
           </div>
           <div className="flex justify-center mb-10">
             <h1 className="text-5xl font-black">Beez It!</h1>
