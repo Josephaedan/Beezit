@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-import logo from "../img/logo.png";
+import React, { useState } from "react";
 
 const CreateBeez = (props) => {
   const [link, setLink] = useState("");
@@ -30,53 +29,49 @@ const CreateBeez = (props) => {
         body: JSON.stringify(body),
       });
       const data = await response.json();
-      console.log(data);
-      if (data.Error) {
-        alert("Error creating a Beez: " + data.Error);
-        return;
+
+      // Error Handling - Failed to create
+      if (data.message) {
+        throw new Error(data.message);
       }
 
-      alert("Beez successfully created with URL ID " + url_id + "!");
-      props.setBeezId(url_id);
+      alert("Beez successfully created with URL ID " + data.url_id + "!");
+      props.setBeezId(data.url_id);
     } catch (err) {
+      alert("Error creating Beez: " + err.message);
       console.error(err.message);
     }
   };
 
   return (
-    <Fragment>
-      <div className="justify-center items-center block ">
-        <form className="block m-5 p-5" onSubmit={onSubmitForm}>
-          <div className="flex justify-center">
-            <img className="h-48" src={logo} alt="Logo" />
-          </div>
-          <div className="flex justify-center mb-10">
-            <h1 className="text-5xl font-black">Beez It!</h1>
-          </div>
-          <label className="m-1">Enter URL here:</label>
-          <input
-            type="url"
-            className="m-1 form-input w-full border rounded"
-            value={link}
-            placeholder="Paste URL here"
-            onChange={(e) => setLink(e.target.value)}
-          />
-          <label className="m-1">Enter 8-character code here:</label>
-          <input
-            type="text"
-            className="m-1 form-input w-full border rounded"
-            value={url_id}
-            placeholder="Leave blank to get a randomly generated code"
-            onChange={(e) => setUrl_id(e.target.value)}
-          />
-          <div className="flex space-x-1 justify-center mt-3">
-            <button className="px-5 py-2 bg-amber-400 hover:bg-amber-600 font-bold rounded-full shadow-lg">
-              Shorten!
-            </button>
-          </div>
-        </form>
-      </div>
-    </Fragment>
+    <>
+      <form
+        className="m-5 p-5 justify-center items-center"
+        onSubmit={onSubmitForm}
+      >
+        <label className="m-1">Enter URL here:</label>
+        <input
+          type="url"
+          className="m-1 form-input w-full border rounded"
+          value={link}
+          placeholder="Paste URL here"
+          onChange={(e) => setLink(e.target.value)}
+        />
+        <label className="m-1">Enter 8-character code here:</label>
+        <input
+          type="text"
+          className="m-1 form-input w-full border rounded"
+          value={url_id}
+          placeholder="Leave blank to get a randomly generated code"
+          onChange={(e) => setUrl_id(e.target.value)}
+        />
+        <div className="flex justify-center mt-3">
+          <button className=" px-5 py-2 bg-amber-400 hover:bg-amber-600 font-bold rounded-full shadow-lg">
+            Shorten!
+          </button>
+        </div>
+      </form>
+    </>
   );
 };
 

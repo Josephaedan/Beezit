@@ -4,6 +4,7 @@ import "./App.css";
 //Components
 import CreateBeez from "./components/CreateBeez";
 import GetBeez from "./components/GetBeez";
+import Logo from "./components/Logo";
 
 function App() {
   const [beezId, setBeezId] = useState("");
@@ -11,12 +12,11 @@ function App() {
   return (
     <>
       <div className="flex h-screen items-center justify-center bg-beez bg-cover">
-        <Fragment>
-          <div className="container bg-white shadow-lg rounded-2xl w-auto mx-auto content-center justify-center">
-            <CreateBeez setBeezId={setBeezId} />
-            {beezId && <GetBeez beezId={beezId} />}
-          </div>
-        </Fragment>
+        <div className=" bg-white shadow-lg rounded-2xl">
+          <Logo />
+          <CreateBeez setBeezId={setBeezId} />
+          {beezId && <GetBeez beezId={beezId} />}
+        </div>
       </div>
     </>
   );
