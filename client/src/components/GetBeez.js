@@ -1,11 +1,11 @@
 import React from "react";
 
 const GetBeez = ({ beezId }) => {
-  function copyToClipboard() {
+  const copyToClipboard = () => {
     var beezUrl = "http://localhost:3001/" + beezId;
 
     navigator.clipboard.writeText(beezUrl);
-  }
+  };
 
   return (
     <>

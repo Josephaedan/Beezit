@@ -4,23 +4,22 @@ const CreateBeez = (props) => {
   const [link, setLink] = useState("");
   const [url_id, setUrl_id] = useState("");
 
-  const onSubmitForm = async (e) => {
+  const generateUrl = () => {
+    // Assign random 8-character code if empty
+    setUrl_id(
+      Array.from(Array(8), () => Math.floor(Math.random() * 36).toString(36))
+        .join("")
+        .toLocaleUpperCase()
+    );
+    alert(
+      "No ID provided, a random 8-character code has been generated for you: " +
+        url_id
+    );
+  };
+
+  const handlePost = async (e) => {
     e.preventDefault();
     try {
-      // Assign random 8-character code if empty
-      if (url_id === "") {
-        setUrl_id(
-          Array.from(Array(8), () =>
-            Math.floor(Math.random() * 36).toString(36)
-          )
-            .join("")
-            .toLocaleUpperCase()
-        );
-        alert(
-          "No ID provided, a random 8-character code has been generated for you. Press submit again."
-        );
-        return;
-      }
       const body = { link, url_id };
 
       const response = await fetch("http://localhost:3001/beez", {
@@ -47,7 +46,7 @@ const CreateBeez = (props) => {
     <>
       <form
         className="m-5 p-5 justify-center items-center"
-        onSubmit={onSubmitForm}
+        onSubmit={handlePost}
       >
         <label className="m-1">Enter URL here:</label>
         <input
