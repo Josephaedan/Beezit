@@ -19,8 +19,8 @@ const CreateBeez = (props) => {
   const handlePost = async (e) => {
     e.preventDefault();
     try {
-      await generateUrl(e);
       if (url_id === "") {
+        generateUrl(e);
         return;
       }
       const body = { link, url_id };
