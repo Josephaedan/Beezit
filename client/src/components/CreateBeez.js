@@ -12,14 +12,17 @@ const CreateBeez = (props) => {
         .toLocaleUpperCase()
     );
     alert(
-      "No ID provided, a random 8-character code has been generated for you: " +
-        url_id
+      "No ID provided, a random 8-character code has been generated for you. Press submit again."
     );
   };
 
   const handlePost = async (e) => {
     e.preventDefault();
     try {
+      await generateUrl(e);
+      if (url_id === "") {
+        return;
+      }
       const body = { link, url_id };
 
       const response = await fetch("http://localhost:3001/beez", {
