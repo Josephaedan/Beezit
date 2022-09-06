@@ -4,28 +4,26 @@ const CreateBeez = (props) => {
   const [link, setLink] = useState("");
   const [url_id, setUrl_id] = useState("");
 
-  const generateUrl = () => {
-    // Assign random 8-character code if empty
-    setUrl_id(
-      Array.from(Array(8), () => Math.floor(Math.random() * 36).toString(36))
-        .join("")
-        .toLocaleUpperCase()
-    );
-    alert(
-      "No ID provided, a random 8-character code has been generated for you. Press submit again."
-    );
-  };
-
-  const handlePost = async (e) => {
+  const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
+      // Assign random 8-character code if empty
       if (url_id === "") {
-        generateUrl(e);
+        setUrl_id(
+          Array.from(Array(8), () =>
+            Math.floor(Math.random() * 36).toString(36)
+          )
+            .join("")
+            .toLocaleUpperCase()
+        );
+        alert(
+          "No ID provided, a random 8-character code has been generated for you. Press submit again."
+        );
         return;
       }
       const body = { link, url_id };
 
-      const response = await fetch("http://localhost:3001/beez", {
+      const response = await fetch("https://beezit-dnaqre2ux-josephaedan.vercel.app/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -49,7 +47,7 @@ const CreateBeez = (props) => {
     <>
       <form
         className="m-5 p-5 justify-center items-center"
-        onSubmit={handlePost}
+        onSubmit={onSubmitForm}
       >
         <label className="m-1">Enter URL here:</label>
         <input
