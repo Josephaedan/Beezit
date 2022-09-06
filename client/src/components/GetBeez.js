@@ -14,7 +14,7 @@ const GetBeez = ({ beezId }) => {
         <input
           type="url"
           className="w-full border rounded"
-          value={"http://localhost:3001/" + beezId}
+          value={"beezit-dnaqre2ux-josephaedan.vercel.app" + beezId}
         ></input>
         <button
           onClick={copyToClipboard()}
